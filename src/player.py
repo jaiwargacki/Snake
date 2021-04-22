@@ -50,6 +50,8 @@ class Snake:
             y += SNAKE_UNIT
         if self.facing == Direction.WEST:
             x -= SNAKE_UNIT
+        x = x % (DIMENSION * SNAKE_UNIT)
+        y = y % (DIMENSION * SNAKE_UNIT)
         if not self.snake.add(SnakeLink(x, y)):
             return None
         prev = self.snake.pop()

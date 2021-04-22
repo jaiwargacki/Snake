@@ -36,13 +36,13 @@ def play():
         try:
             f_x, f_y = food.get_location()
             pygame.draw.rect(screen, FOOD_COLOR,
-                             pygame.Rect(f_x, f_y, BLOCK_SIZE, BLOCK_SIZE))
+                             pygame.Rect(f_x, f_y, SNAKE_UNIT, SNAKE_UNIT))
             x_pos, y_pos = snake.move()
             pygame.draw.rect(screen, BACKGROUND_COLOR,
-                             pygame.Rect(x_pos, y_pos, BLOCK_SIZE, BLOCK_SIZE))
+                             pygame.Rect(x_pos, y_pos, SNAKE_UNIT, SNAKE_UNIT))
             x_pos, y_pos = snake.get_head()
             pygame.draw.rect(screen, SNAKE_COLOR,
-                             pygame.Rect(x_pos, y_pos, BLOCK_SIZE, BLOCK_SIZE))
+                             pygame.Rect(x_pos, y_pos, SNAKE_UNIT, SNAKE_UNIT))
             if f_x == x_pos and f_y == y_pos:
                 snake.grow()
                 food = Food(snake)
