@@ -1,8 +1,6 @@
 # Snake
 
-This repository contains a snake game written in python which makes use of pygame.
-
-![Snake game running](./img/snake_example_1.png)
+This repository contains a snake game written in Python which makes use of Pygame.
 
 ## Usage
 
@@ -12,8 +10,9 @@ Increase the snakes size by eating the red food.
 The game will continue until the snake enters a square it already occupies, 
 upon which the window will close.
 
+![Snake game running](./img/snake_example_1.png)
+
 ## Future Elaborations
-* Improved controls
 * Starting menu
 * Score indicator
 * Ending screen
