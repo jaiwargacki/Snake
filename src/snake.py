@@ -10,14 +10,25 @@ def play():
     Begins the game of snake.
     :return: None
     """
+    pygame.init()
     screen = pygame.display.set_mode(WINDOW_DIMENSIONS)
     pygame.display.set_caption(WINDOW_TITLE)
     screen.fill(BACKGROUND_COLOR)
-    pygame.display.flip()
 
     snake = Snake()
     food = Food(snake)
     paused = True
+    first = True
+
+    font_1 = pygame.font.SysFont('CourierNew', 40)
+    text_1 = font_1.render('Snake', True, SNAKE_COLOR)
+    text_rect_1 = text_1.get_rect(center=(DIMENSION * SNAKE_UNIT / 2, (DIMENSION-10) * SNAKE_UNIT / 2))
+    screen.blit(text_1, text_rect_1)
+    font_2 = pygame.font.SysFont('CourierNew', 20)
+    text_2 = font_2.render('Press Space to Start', True, FOOD_COLOR)
+    text_rect_2 = text_2.get_rect(center=(DIMENSION * SNAKE_UNIT / 2, DIMENSION * SNAKE_UNIT / 2))
+    screen.blit(text_2, text_rect_2)
+    pygame.display.update()
 
     while True:
         for event in pygame.event.get():
@@ -36,6 +47,9 @@ def play():
         if pressed[pygame.K_SPACE]:
             paused = not paused
             pygame.time.wait(PAUSE_DELAY)
+            if first:
+                first = False
+                screen.fill(BACKGROUND_COLOR)
         if not paused:
             # Update game condition
             try:
