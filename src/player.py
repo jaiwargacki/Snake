@@ -162,8 +162,8 @@ class Food:
 
     def __init__(self, snake):
         while True:
-            x = random.randint(0, D) * 10
-            y = random.randint(0, D) * 10
+            x = random.randint(1, DIMENSION-1) * 10
+            y = random.randint(1, DIMENSION-1) * 10
             if not SnakeLink(x, y) in snake.snake.contents:
                 break
         self.x_pos = x
