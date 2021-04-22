@@ -14,6 +14,9 @@ class Snake:
         self.length = 1
         self.facing = EAST
 
+    def __sizeof__(self):
+        return self.snake.size
+
     def get_head(self):
         """
         Gets the current x, y position of the snake's head.

@@ -68,7 +68,16 @@ def play():
                     food = Food(snake)
             except TypeError:
                 # Caught if snake.move() returns None indicating game has been lost
-                exit(0)
+                screen.fill(BACKGROUND_COLOR)
+                font = pygame.font.SysFont(MENU_FONT, SMALL_FONT_SIZE)
+                text = font.render(SCORE_TEXT % snake.__sizeof__(), True, FOOD_COLOR)
+                text_rect = text.get_rect(center=SMALL_TEXT_LOC)
+                screen.blit(text, text_rect)
+                pygame.display.update()
+                while True:
+                    for event in pygame.event.get():
+                        if event.type == pygame.QUIT:
+                            exit(0)
         pygame.display.update()
         pygame.time.Clock().tick(FPS)
 
