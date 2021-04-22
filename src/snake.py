@@ -69,10 +69,14 @@ def play():
             except TypeError:
                 # Caught if snake.move() returns None indicating game has been lost
                 screen.fill(BACKGROUND_COLOR)
-                font = pygame.font.SysFont(MENU_FONT, SMALL_FONT_SIZE)
-                text = font.render(SCORE_TEXT % snake.__sizeof__(), True, FOOD_COLOR)
-                text_rect = text.get_rect(center=SMALL_TEXT_LOC)
-                screen.blit(text, text_rect)
+                font_1 = pygame.font.SysFont(MENU_FONT, LARGE_FONT_SIZE)
+                text_1 = font_1.render(GAME_OVER_TEXT, True, SNAKE_COLOR)
+                text_rect_1 = text_1.get_rect(center=LARGE_TEXT_LOC)
+                screen.blit(text_1, text_rect_1)
+                font_2 = pygame.font.SysFont(MENU_FONT, SMALL_FONT_SIZE)
+                text_2 = font_2.render(SCORE_TEXT % snake.__sizeof__(), True, FOOD_COLOR)
+                text_rect_2 = text_2.get_rect(center=SMALL_TEXT_LOC)
+                screen.blit(text_2, text_rect_2)
                 pygame.display.update()
                 while True:
                     for event in pygame.event.get():
