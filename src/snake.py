@@ -24,13 +24,13 @@ def play():
                 exit(0)
         # Update facing direction
         pressed = pygame.key.get_pressed()
-        if pressed[pygame.K_UP]:
+        if pressed[pygame.K_UP] or pressed[pygame.K_w]:
             snake.update_facing(Direction.NORTH)
-        if pressed[pygame.K_DOWN]:
+        if pressed[pygame.K_DOWN] or pressed[pygame.K_s]:
             snake.update_facing(Direction.SOUTH)
-        if pressed[pygame.K_LEFT]:
+        if pressed[pygame.K_LEFT] or pressed[pygame.K_a]:
             snake.update_facing(Direction.WEST)
-        if pressed[pygame.K_RIGHT]:
+        if pressed[pygame.K_RIGHT] or pressed[pygame.K_d]:
             snake.update_facing(Direction.EAST)
         # Update game condition
         try:
