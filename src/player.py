@@ -12,7 +12,7 @@ class Snake:
         self.x_bound, self.y_bound = WINDOW_DIMENSIONS
         self.snake = SnakeChain()
         self.length = 1
-        self.facing = Direction.EAST
+        self.facing = EAST
 
     def get_head(self):
         """
@@ -34,7 +34,8 @@ class Snake:
         :param update: The new direction to be facing.
         :return: None.
         """
-        self.facing = update
+        if (self.facing + 2) % 4 != update or self.snake.size == 1:
+            self.facing = update
 
     def move(self):
         """
@@ -42,13 +43,13 @@ class Snake:
         :return: the location of the previous tail piece, None if dead
         """
         x, y = self.get_head()
-        if self.facing == Direction.NORTH:
+        if self.facing == NORTH:
             y -= SNAKE_UNIT
-        if self.facing == Direction.EAST:
+        if self.facing == EAST:
             x += SNAKE_UNIT
-        if self.facing == Direction.SOUTH:
+        if self.facing == SOUTH:
             y += SNAKE_UNIT
-        if self.facing == Direction.WEST:
+        if self.facing == WEST:
             x -= SNAKE_UNIT
         x = x % (DIMENSION * SNAKE_UNIT)
         y = y % (DIMENSION * SNAKE_UNIT)

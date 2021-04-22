@@ -17,6 +17,7 @@ def play():
 
     snake = Snake()
     food = Food(snake)
+    paused = True
 
     while True:
         for event in pygame.event.get():
@@ -24,33 +25,37 @@ def play():
                 exit(0)
         # Update facing direction
         pressed = pygame.key.get_pressed()
-        if pressed[pygame.K_UP]:
-            snake.update_facing(Direction.NORTH)
-        if pressed[pygame.K_DOWN]:
-            snake.update_facing(Direction.SOUTH)
-        if pressed[pygame.K_LEFT]:
-            snake.update_facing(Direction.WEST)
-        if pressed[pygame.K_RIGHT]:
-            snake.update_facing(Direction.EAST)
-        # Update game condition
-        try:
-            f_x, f_y = food.get_location()
-            pygame.draw.rect(screen, FOOD_COLOR,
-                             pygame.Rect(f_x, f_y, SNAKE_UNIT, SNAKE_UNIT))
-            x_pos, y_pos = snake.move()
-            pygame.draw.rect(screen, BACKGROUND_COLOR,
-                             pygame.Rect(x_pos, y_pos, SNAKE_UNIT, SNAKE_UNIT))
-            x_pos, y_pos = snake.get_head()
-            pygame.draw.rect(screen, SNAKE_COLOR,
-                             pygame.Rect(x_pos, y_pos, SNAKE_UNIT, SNAKE_UNIT))
-            if f_x == x_pos and f_y == y_pos:
-                snake.grow()
-                food = Food(snake)
-        except TypeError:
-            # Caught if snake.move() returns None indicating game has been lost
-            exit(0)
+        if pressed[pygame.K_UP] or pressed[pygame.K_w]:
+            snake.update_facing(NORTH)
+        if pressed[pygame.K_DOWN] or pressed[pygame.K_s]:
+            snake.update_facing(SOUTH)
+        if pressed[pygame.K_LEFT] or pressed[pygame.K_a]:
+            snake.update_facing(WEST)
+        if pressed[pygame.K_RIGHT] or pressed[pygame.K_d]:
+            snake.update_facing(EAST)
+        if pressed[pygame.K_SPACE]:
+            paused = not paused
+            pygame.time.wait(PAUSE_DELAY)
+        if not paused:
+            # Update game condition
+            try:
+                f_x, f_y = food.get_location()
+                pygame.draw.rect(screen, FOOD_COLOR,
+                                 pygame.Rect(f_x, f_y, SNAKE_UNIT, SNAKE_UNIT))
+                x_pos, y_pos = snake.move()
+                pygame.draw.rect(screen, BACKGROUND_COLOR,
+                                 pygame.Rect(x_pos, y_pos, SNAKE_UNIT, SNAKE_UNIT))
+                x_pos, y_pos = snake.get_head()
+                pygame.draw.rect(screen, SNAKE_COLOR,
+                                 pygame.Rect(x_pos, y_pos, SNAKE_UNIT, SNAKE_UNIT))
+                if f_x == x_pos and f_y == y_pos:
+                    snake.grow()
+                    food = Food(snake)
+            except TypeError:
+                # Caught if snake.move() returns None indicating game has been lost
+                exit(0)
         pygame.display.update()
-        pygame.time.Clock().tick(15)
+        pygame.time.Clock().tick(FPS)
 
 
 if __name__ == '__main__':
