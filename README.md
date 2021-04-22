@@ -13,10 +13,9 @@ upon which the window will close.
 ![Snake game running](./img/snake_example_1.png)
 
 ## Future Elaborations
-* Starting menu
-* Score indicator
-* Ending screen
 * Color and other customization options
+* Game rule adjustments (edge wrapping vs not)
+* Sound effects & music
 
 ## Licence
 
