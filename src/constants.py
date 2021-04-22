@@ -1,5 +1,3 @@
-import enum
-
 """ Constants & Enums used in other files. """
 __author__ = "Jai Wargacki"
 
@@ -7,11 +5,11 @@ SNAKE_UNIT = 10
 STARTING_POSITION = (10, 10)
 
 
-class Direction(enum.Enum):
-    NORTH = 1
-    EAST = 2
-    SOUTH = 3
-    WEST = 4
+# Directions
+NORTH = 0
+EAST = 1
+SOUTH = 2
+WEST = 3
 
 
 DIMENSION = 60

@@ -25,13 +25,13 @@ def play():
         # Update facing direction
         pressed = pygame.key.get_pressed()
         if pressed[pygame.K_UP] or pressed[pygame.K_w]:
-            snake.update_facing(Direction.NORTH)
+            snake.update_facing(NORTH)
         if pressed[pygame.K_DOWN] or pressed[pygame.K_s]:
-            snake.update_facing(Direction.SOUTH)
+            snake.update_facing(SOUTH)
         if pressed[pygame.K_LEFT] or pressed[pygame.K_a]:
-            snake.update_facing(Direction.WEST)
+            snake.update_facing(WEST)
         if pressed[pygame.K_RIGHT] or pressed[pygame.K_d]:
-            snake.update_facing(Direction.EAST)
+            snake.update_facing(EAST)
         # Update game condition
         try:
             f_x, f_y = food.get_location()
