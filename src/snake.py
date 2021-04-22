@@ -20,13 +20,14 @@ def play():
     paused = True
     first = True
 
-    font_1 = pygame.font.SysFont('CourierNew', 40)
-    text_1 = font_1.render('Snake', True, SNAKE_COLOR)
-    text_rect_1 = text_1.get_rect(center=(DIMENSION * SNAKE_UNIT / 2, (DIMENSION-10) * SNAKE_UNIT / 2))
+    # Display start screen
+    font_1 = pygame.font.SysFont(MENU_FONT, LARGE_FONT_SIZE)
+    text_1 = font_1.render(WINDOW_TITLE, True, SNAKE_COLOR)
+    text_rect_1 = text_1.get_rect(center=LARGE_TEXT_LOC)
     screen.blit(text_1, text_rect_1)
-    font_2 = pygame.font.SysFont('CourierNew', 20)
-    text_2 = font_2.render('Press Space to Start', True, FOOD_COLOR)
-    text_rect_2 = text_2.get_rect(center=(DIMENSION * SNAKE_UNIT / 2, DIMENSION * SNAKE_UNIT / 2))
+    font_2 = pygame.font.SysFont(MENU_FONT, SMALL_FONT_SIZE)
+    text_2 = font_2.render(START_TEXT, True, FOOD_COLOR)
+    text_rect_2 = text_2.get_rect(center=SMALL_TEXT_LOC)
     screen.blit(text_2, text_rect_2)
     pygame.display.update()
 
